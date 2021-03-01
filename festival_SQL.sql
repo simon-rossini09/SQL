@@ -89,16 +89,13 @@ foreign key concert_id_b references Concert(Concert_ID), Num_Place int, Categori
 create table Vente(Vente_ID int not null auto_increment primary key, Date_Vente date, constraint fk_billet_id_v 
 foreign key billet_id_v references Billet(Billlet_ID), MoyenPaiement varchar(30));
 
-Spectacle (Spectacle_ID, Titre, DateDéb, Durée, Salle_ID, Chanteur)
-Concert (Concert_ID, Date, Heure, Spectacle_ID)
-Salle (Salle_ID, Nom, Adresse, Capacité)
-Billet (Billet_ID, Concert_ID, Num_Place, Catégorie, Prix)
-Vente (Vente_ID, Date_Vente, Billet_ID, MoyenPaiement)
-Les attributs soulignés sont les attributs appartenant à la clé primaire. Ils sont de type entier.
-L’attribut Salle_ID de la relation Spectacle est une clé étrangère qui fait référence à l’attribut
-de même nom de la relation Salle. L’attribut Spectacle_ID de la relation Concert est une clé
-étrangère qui fait référence à l’attribut de même nom de la relation Spectacle. L’attribut
-Concert_ID de la relation Billet est une clé étrangère qui fait référence à l’attribut de même
-nom de la relation Concert.
-L’attribut Billet_ID de la relation Vente est une clé étrangère qui fait référence à l’attribut de
-même nom de la relation Billet.
+select DateDeb from Spectacle where Chanteur='Corneille' and where Salle_ID_spec='Zénith';
+select nom from Salle where capacite = max;
+select chanteur from Spectacle where Salle_ID_spec!='la Cygale' having Nom from Salle;
+
+Select Date, Concert_ID from Concert where Concert_ID=billet_ID and concert_id_b = Capacite from salle; 
+
+3. Quels sont les chanteurs n’ayant jamais réalisé de concert à la Cygale ?
+4. Quels sont les chanteurs ayant réalisé au moins un concert dans toutes les salles ?
+5. Quels sont les dates et les identificateurs des concerts pour lesquels il ne reste aucun
+billet invendu ?
